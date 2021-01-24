@@ -30,6 +30,13 @@ class NoteActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        note = Note()
+        note = intent?.getSerializableExtra("note") as Note?
+
+        if (note != null) {
+            txtTitle.setText(note?.title)
+            txtContent.setText(note?.content)
+        } else {
+            note = Note()
+        }
     }
 }
